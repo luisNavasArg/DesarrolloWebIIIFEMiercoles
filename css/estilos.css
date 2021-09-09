@@ -1,0 +1,11 @@
+.boton{
+    background-color: blue;
+    color: white;
+}
+.card{
+    background-color: blueviolet;
+    margin: 5px;
+}
+body{
+    background-color: rgba(137, 43, 226, 0.623);
+}
