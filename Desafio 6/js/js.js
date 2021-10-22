@@ -21,7 +21,37 @@ const cargarListado=()=>{
 cargarListado();
 const crearImagen=(url)=>{
     let contenedor = document.getElementById("contenedor");
-    console.log(url);
+    fetch(url).then((res)=>{
+        return res.json();
+    }).then((obj)=>{
+        console.log(obj)
+        cargarCarta(obj)
+    });
 
+}
+
+const cargarCarta=(pk)=>{
+    let contenedor = document.getElementById("cont");
+    let mov = pk.moves;
+    let dance = "";
+    mov.forEach((p)=>{
+        dance+=`
+            <option>${p.move.name}</option>
+        `;
+    });
+    let plantilla =`
+    <div class="card" style="width: 18rem;">
+    <img src="${pk.sprites.front_default}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${pk.name}</h5>
+      <p class="card-text"></p>
+      <select class="form-select">
+        ${dance}
+      </select>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+    `;
+    contenedor.innerHTML=plantilla;
 }
 
